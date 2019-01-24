@@ -11,8 +11,10 @@ durationString(3600)
 durationString(300)
 // output: 00:05:00
 
-durationString(243)
-// output: 00:04:03
+durationString(243, {
+    forceShowHours: false
+})
+// output: 04:03
 ```
 
 ## Installation
