@@ -1,10 +1,12 @@
 interface DurationObject {
-    hours: number,
-    minutes: number,
-    seconds: number,
+    days: number
+    hours: number
+    minutes: number
+    seconds: number
 }
 
 interface VisibilityOptionsType {
+    forceShowDays: boolean
     forceShowHours: boolean
     forceShowMinutes: boolean
 }
@@ -15,11 +17,14 @@ function createDurationString(input: string): string {
 
 function getDurationObject(durationInSeconds: number): DurationObject {
     const times: DurationObject = {
+        days: 0,
         hours: 0,
         minutes: 0,
         seconds: 0
     }
 
+    times.days = Math.floor(durationInSeconds / 60 / 60 / 24)
+    if (times.days) durationInSeconds -= (times.days * 60 * 60 * 24)
     times.hours = Math.floor(durationInSeconds / 60 / 60)
     if (times.hours) durationInSeconds -= (times.hours * 60 * 60)
     times.minutes = Math.floor(durationInSeconds / 60)
@@ -31,6 +36,7 @@ function getDurationObject(durationInSeconds: number): DurationObject {
 
 export default function durationToString(durationInSeconds: number, visibilityOptions: VisibilityOptionsType): string {
     const defaultVisibilityOptions: VisibilityOptionsType = {
+        forceShowDays: false,
         forceShowHours: true,
         forceShowMinutes: true,
     }
@@ -38,6 +44,10 @@ export default function durationToString(durationInSeconds: number, visibilityOp
 
     const duration: DurationObject = getDurationObject(durationInSeconds)
     let durationString = ``
+
+    if (duration.days || (duration.days === 0 && mergedVisibilityOption.forceShowDays)) {
+        durationString += `${createDurationString(String(duration.days))}:`
+    }
     
     if (duration.hours || (duration.hours === 0 && mergedVisibilityOption.forceShowHours)) {
         durationString += `${createDurationString(String(duration.hours))}:`
