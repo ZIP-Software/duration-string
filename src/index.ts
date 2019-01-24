@@ -40,11 +40,11 @@ export default function durationToString(durationInSeconds: number, visibilityOp
     let durationString = ``
     
     if (duration.hours || (duration.hours === 0 && mergedVisibilityOption.forceShowHours)) {
-        durationString += `createDurationString(String(duration.hours))}:`
+        durationString += `${createDurationString(String(duration.hours))}:`
     }
 
     if (duration.minutes || (duration.minutes === 0 && mergedVisibilityOption.forceShowMinutes)) {
-        durationString += `createDurationString(String(duration.minutes))}:`
+        durationString += `${createDurationString(String(duration.minutes))}:`
     }
 
     durationString += `${createDurationString(String(duration.seconds))}`
