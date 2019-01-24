@@ -26,12 +26,6 @@ function getDurationObject(durationInSeconds: number): DurationObject {
 
 export default function durationToString(durationInSeconds: number): string {
     const duration: DurationObject = getDurationObject(durationInSeconds)
-
-    let durationString = ''
-
-    if (duration.hours) durationString += `${createDurationString(String(duration.hours))}:`
-    if (duration.minutes) durationString += `${createDurationString(String(duration.minutes))}:`
-    if (duration.seconds) durationString += createDurationString(String(duration.seconds))
-
+    const durationString = `${createDurationString(String(duration.hours))}:${createDurationString(String(duration.minutes))}:${createDurationString(String(duration.seconds))}`
     return durationString
 }
