@@ -3,6 +3,9 @@
   "version": "1.0.3",
   "description": "",
   "main": "dist/index.js",
+  "repository": {
+    "url": "https://github.com/zip-software/duration-string"
+  },
   "scripts": {
     "clean": "rm -rf ./dist",
     "dev": "npm run clean && tsc -p config/tsconfig.dev.json",
