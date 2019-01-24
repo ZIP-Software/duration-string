@@ -16,7 +16,7 @@ durationString(243, {
     forceShowHours: false,
     forceShowMinutes: false,
 })
-// output: 04:03
+// output: 243
 
 durationString(100000, {
     forceShowDays: true,
