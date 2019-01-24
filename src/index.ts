@@ -4,6 +4,11 @@ interface DurationObject {
     seconds: number,
 }
 
+interface VisibilityOptionsType {
+    forceShowHours: boolean
+    forceShowMinutes: boolean
+}
+
 function createDurationString(input: string): string {
     return (input.length === 2) ? input : '0' + input
 }
@@ -24,8 +29,25 @@ function getDurationObject(durationInSeconds: number): DurationObject {
     return times
 }
 
-export default function durationToString(durationInSeconds: number): string {
+export default function durationToString(durationInSeconds: number, visibilityOptions: VisibilityOptionsType): string {
+    const defaultVisibilityOptions: VisibilityOptionsType = {
+        forceShowHours: true,
+        forceShowMinutes: true,
+    }
+    const mergedVisibilityOption: VisibilityOptionsType = (!visibilityOptions) ? defaultVisibilityOptions : Object.assign(defaultVisibilityOptions, visibilityOptions)
+
     const duration: DurationObject = getDurationObject(durationInSeconds)
-    const durationString = `${createDurationString(String(duration.hours))}:${createDurationString(String(duration.minutes))}:${createDurationString(String(duration.seconds))}`
+    let durationString = ``
+    
+    if (duration.hours || (duration.hours === 0 && mergedVisibilityOption.forceShowHours)) {
+        durationString += `createDurationString(String(duration.hours))}:`
+    }
+
+    if (duration.minutes || (duration.minutes === 0 && mergedVisibilityOption.forceShowMinutes)) {
+        durationString += `createDurationString(String(duration.minutes))}:`
+    }
+
+    durationString += `${createDurationString(String(duration.seconds))}`
+
     return durationString
 }
