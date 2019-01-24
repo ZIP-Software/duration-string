@@ -1,0 +1,24 @@
+{
+  "name": "@zip-software/duration-string",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "clean": "rm -rf ./dist",
+    "dev": "npm run clean && tsc -p config/tsconfig.dev.json",
+    "build": "npm run clean && tsc -p config/tsconfig.build.json",
+    "prepublish": "npm run build"
+  },
+  "keywords": [
+    "duration",
+    "string",
+    "seconds",
+    "to",
+    "transformer"
+  ],
+  "author": "dominik@bdbch.com",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^3.2.4"
+  }
+}
