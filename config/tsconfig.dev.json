@@ -6,7 +6,7 @@
         "preserveConstEnums": true,
         "sourceMap": true,
         "watch": true,
-        "target": "es2015",
+        "target": "es5",
         "outDir": "../dist",
         "lib": [
             "es2017"
